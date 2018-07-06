@@ -6,6 +6,10 @@ class Dollar
   end
 
   def times mult
-    @amount *= mult
+    Dollar.new(@amount * mult)
+  end
+
+  def == other_item
+    @amount == other_item.amount
   end
 end
