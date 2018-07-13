@@ -1,6 +1,5 @@
 require "test_helper"
-require "test_driven_development_by_example/dollar"
-require "test_driven_development_by_example/franc"
+require "test_driven_development_by_example/money"
 
 class MoneyTest < Minitest::Test
   def test_multiplication
@@ -18,14 +17,8 @@ class MoneyTest < Minitest::Test
   def test_equality
     assert_equal(true, Money.dollar(5) == Money.dollar(5))
     assert_equal(false, Money.dollar(5) == Money.dollar(6))
-    assert_equal(true, Money.franc(5) == Money.franc(5))
-    assert_equal(false, Money.franc(5) == Money.franc(6))
 
     assert_equal(false, Money.franc(5) == Money.dollar(5))
-  end
-
-  def test_different_class_equality
-    assert_equal Money.new(10, 'CHF'), Franc.new(10, 'CHF')
   end
 
   def test_currency
