@@ -1,13 +1,12 @@
 require_relative "money"
 
 class Franc < Money
-  attr_reader :amount
 
-  def initialize amount
-    @amount = amount
+  def initialize amount, currency
+    super amount, currency
   end
 
   def times mult
-    Franc.new(@amount * mult)
+    Money.franc(amount * mult)
   end
 end

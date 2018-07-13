@@ -1,11 +1,12 @@
 require_relative "money"
 
 class Dollar < Money
-  def initialize amount
-    @amount = amount
+
+  def initialize amount, currency
+    super amount, currency
   end
 
   def times mult
-    Dollar.new(@amount * mult)
+    Money.dollar(amount * mult)
   end
 end
