@@ -7,7 +7,11 @@ class Money
   end
 
   def == other_item
-    @amount == other_item.amount && other_item.class.name == self.class.name
+    @amount == other_item.amount && other_item.currency == self.currency
+  end
+
+  def times mult
+    Money.new(amount * mult, currency)
   end
 
   def self.dollar amount
