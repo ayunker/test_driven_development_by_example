@@ -1,4 +1,5 @@
 require 'test_driven_development_by_example/expression'
+require 'test_driven_development_by_example/sum'
 
 class Money
   include Expression
@@ -23,7 +24,7 @@ class Money
   end
 
   def plus addend
-    Money.new(amount + addend.amount, currency)
+    return Sum.new self, addend
   end
 
   def self.dollar amount
@@ -32,6 +33,10 @@ class Money
 
   def self.franc amount
     Money.new amount, 'CHF'
+  end
+
+  def reduce curr_to
+    self
   end
 end
 

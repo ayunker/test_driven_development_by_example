@@ -27,14 +27,38 @@ class MoneyTest < Minitest::Test
     assert_equal 'USD', Money.dollar(1).currency
   end
 
-  def test_simple_addition
-    # sum = Money.dollar(5).plus(Money.dollar(5))
-    # assert_equal(Money.dollar(10), sum)
+  # I don't think this test is valid anymore
+  # just doesn't make sense in the current context??????
+  # def test_simple_addition
+  #   sum = Money.dollar(5).plus(Money.dollar(5))
+  #   assert_equal(Money.dollar(10), sum)
+  # end
 
+  # def test_reduce_sum
+  #   five = Money.dollar 5
+  #   sum = five.plus five
+  #   bank = Bank.new
+  #   reduced = bank.reduce(sum, 'USD')
+  #   assert_equal Money.dollar(10), reduced
+  # end
+
+  def test_reduce_sum
+    sum = Sum.new Money.dollar(3), Money.dollar(4)
+    bank = Bank.new
+    result = bank.reduce sum, 'USD'
+    assert_equal Money.dollar(7), result
+  end
+
+  def test_plus_returns_sum
     five = Money.dollar 5
     sum = five.plus five
+    assert_equal five, sum.augend
+    assert_equal five, sum.addend
+  end
+
+  def test_reduce_money
     bank = Bank.new
-    reduced = bank.reduce(sum, 'USD')
-    assert_equal Money.dollar(10), reduced
+    result = bank.reduce(Money.dollar(1), 'USD')
+    assert_equal Money.dollar(1), result
   end
 end

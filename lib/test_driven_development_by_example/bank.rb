@@ -1,5 +1,5 @@
 class Bank
-  def reduce source, to
-    return Money.dollar 10
+  def reduce source, curr_to
+    source.reduce curr_to
   end
 end
