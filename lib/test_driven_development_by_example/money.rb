@@ -1,4 +1,8 @@
+require 'test_driven_development_by_example/expression'
+
 class Money
+  include Expression
+
   attr_reader :amount, :currency
 
   def initialize amount, currency
@@ -10,8 +14,16 @@ class Money
     @amount == other_item.amount && other_item.currency == self.currency
   end
 
+  def currency
+    @currency
+  end
+
   def times mult
     Money.new(amount * mult, currency)
+  end
+
+  def plus addend
+    Money.new(amount + addend.amount, currency)
   end
 
   def self.dollar amount
@@ -22,3 +34,4 @@ class Money
     Money.new amount, 'CHF'
   end
 end
+
