@@ -35,8 +35,9 @@ class Money
     Money.new amount, 'CHF'
   end
 
-  def reduce curr_to
-    self
+  def reduce bank, curr_to
+    rate = bank.rate currency, curr_to
+    Money.new(amount / rate, curr_to)
   end
 end
 

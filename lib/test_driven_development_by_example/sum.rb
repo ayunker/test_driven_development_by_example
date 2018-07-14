@@ -18,7 +18,7 @@ class Sum
     @addend
   end
 
-  def reduce curr_to
+  def reduce bank, curr_to
     amount = augend.amount + addend.amount
     Money.new amount, curr_to
   end
