@@ -19,7 +19,7 @@ class Sum
   end
 
   def reduce bank, curr_to
-    amount = augend.amount + addend.amount
+    amount = augend.reduce(bank, curr_to).amount + addend.reduce(bank, curr_to).amount
     Money.new amount, curr_to
   end
 end
