@@ -18,6 +18,10 @@ class Sum
     @addend
   end
 
+  def times multiplier
+    Sum.new(augend.times(multiplier), addend.times(multiplier))
+  end
+
   def reduce bank, curr_to
     amount = augend.reduce(bank, curr_to).amount + addend.reduce(bank, curr_to).amount
     Money.new amount, curr_to
